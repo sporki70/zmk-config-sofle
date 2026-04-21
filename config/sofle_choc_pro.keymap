@@ -28,6 +28,19 @@
         };
     };
 
+    behaviors {
+        tap_hold: tap_hold {
+            compatible = "zmk,behavior-hold-tap";
+            label = "tap_hold";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <20>;
+            flavor = "balanced";
+            hold-trigger-key-positions = <55>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -42,11 +55,11 @@
             //               | GUI | ALT  | CTRL | LOWER|  ENTER |  | SPACE | RAISE| CTRL  | ALT   | GUI  |
 
             bindings = <
-&kp DE_N1  &kp N2    &kp DE_N3     &kp DE_N4  &kp DE_N5         &kp DE_N6                      &kp DE_N7  &kp DE_N8  &kp DE_N9     &kp DE_N0      &kp DE_ESZETT    &kp DE_GRAVE
-&kp ESC    &kp Q     &kp W         &kp E      &kp R             &kp T      &kp DE_Z                       &kp U      &kp I         &kp O          &kp P            &kp DE_U_UMLAUT
-&kp TAB    &kp A     &kp S         &kp D      &kp F             &kp G      &kp H                          &kp J      &kp K         &kp L          &kp DE_O_UMLAUT  &kp DE_A_UMLAUT
-&kp LSHFT  &kp DE_Y  &kp X         &kp C      &kp V             &kp B      &none      &none    &kp N      &kp M      &kp DE_COMMA  &kp DE_DOT     &kp DE_MINUS     &kp BACKSPACE
-                     &kp LEFT_ALT  &kp LGUI   &kp LEFT_CONTROL  &mo LOWER  &kp SPACE  &kp RET  &mo RAISE  &kp RCTRL  &kp LEFT_WIN  &kp RIGHT_ALT
+&kp DE_N1  &kp N2    &kp DE_N3     &kp DE_N4  &kp DE_N5         &kp DE_N6                                          &kp DE_N7  &kp DE_N8  &kp DE_N9     &kp DE_N0      &kp DE_ESZETT    &kp DE_GRAVE
+&kp ESC    &kp Q     &kp W         &kp E      &kp R             &kp T      &kp DE_Z                                           &kp U      &kp I         &kp O          &kp P            &kp DE_U_UMLAUT
+&kp TAB    &kp A     &kp S         &kp D      &kp F             &kp G      &kp H                                              &kp J      &kp K         &kp L          &kp DE_O_UMLAUT  &kp DE_A_UMLAUT
+&kp LSHFT  &kp DE_Y  &kp X         &kp C      &kp V             &kp B      &none      &none                        &kp N      &kp M      &kp DE_COMMA  &kp DE_DOT     &kp DE_MINUS     &kp BACKSPACE
+                     &kp LEFT_ALT  &kp LGUI   &kp LEFT_CONTROL  &mo LOWER  &kp SPACE  &tap_hold LEFT_SHIFT RETURN  &mo RAISE  &kp RCTRL  &kp LEFT_WIN  &kp RIGHT_ALT
             >;
         };
 
